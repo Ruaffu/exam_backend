@@ -1,0 +1,16 @@
+POST http://localhost:8080/devops_starter_war_exploded/api/login
+
+{"username":"user", "password":"test123"}
+
+###
+
+GET https://catfact.ninja/fact
+
+###
+GET https://cataas.com/cat?json=true
+
+
+###
+POST http://localhost:8080/ca2_startcode_backend_war_exploded/api/info/newuser
+
+{"userName":"user2", "userPass":"test123"}
