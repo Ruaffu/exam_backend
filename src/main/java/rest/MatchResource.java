@@ -41,4 +41,30 @@ public class MatchResource
                 .entity(GSON.toJson(response))
                 .build();
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{id}/play")
+    @RolesAllowed("user")
+    public Response getMatchesByPlayerId(@PathParam("id") Long id) throws IOException
+    {
+        List<MatchDTO> response = FACADE.getMatchesByPlayerId(id);
+        return Response
+                .ok()
+                .entity(GSON.toJson(response))
+                .build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{id}/location")
+    @RolesAllowed("user")
+    public Response getMatchesByLocationId(@PathParam("id") Long id) throws IOException
+    {
+        List<MatchDTO> response = FACADE.getMatchesByLocationId(id);
+        return Response
+                .ok()
+                .entity(GSON.toJson(response))
+                .build();
+    }
 }

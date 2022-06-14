@@ -11,9 +11,20 @@ GET https://cataas.com/cat?json=true
 
 
 ###
-POST http://localhost:8080/ca2_startcode_backend_war_exploded/api/info/newuser
+POST http://localhost:8080/exam_backend_war_exploded/api/admin/location
 
-{"userName":"user2", "userPass":"test123"}
+{
+  "id": 0,
+  "address": "testAddress4",
+  "city": "testCity4",
+  "condition": "testCondition4",
+  "matches": [
+    "Oppenent Team: testTeam3 judge: testjudge3 type: testType3 inDoors: false"
+  ]
+}
 
 ###
 GET http://localhost:8080/exam_backend_war_exploded/api/matches/all
+
+###
+DELETE http://localhost:8080/exam_backend_war_exploded/api/admin/1/delete

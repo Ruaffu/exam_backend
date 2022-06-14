@@ -17,6 +17,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
 public class MatchFacadeTest
@@ -176,6 +179,23 @@ public class MatchFacadeTest
 
     @Test
     public void testUpdateAllInformation(){
+        Player p4 = new Player("testName4","testPhone4","testEmail4","testStatus4");
+        Player p5 = new Player("testName5","testPhone5","testEmail5","testStatus5");
+        m1.setOpponentTeam("Dream Team");
+        m1.setJudge("momo");
+        m1.setType("hello");
+        m1.setInDoors("Yes indoors");
+        m1.setLocation(l2);
+        List<Player> players = new ArrayList<>();
+        players.add(p4);
+        players.add(p5);
+        m1.setPlayers(players);
+
+        MatchDTO matchDTO = new MatchDTO(m1);
+        facade.updateAllMatchInformation(m1.getId(), matchDTO);
+
+        assertEquals("momo", matchDTO.getJudge());
+        assertEquals(l2.getId(), matchDTO.getLocation().getId());
 
     }
 

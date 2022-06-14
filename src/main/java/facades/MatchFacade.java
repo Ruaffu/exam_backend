@@ -229,7 +229,7 @@ public class MatchFacade
             match.setLocation(location);
 
             em.getTransaction().begin();
-            em.persist(match);
+            em.merge(match);
             em.getTransaction().commit();
             return new MatchDTO(match);
         }finally
@@ -239,5 +239,34 @@ public class MatchFacade
 
 
 
+    }
+
+    public MatchDTO updateAllMatchInformation(Long id, MatchDTO matchDTO)
+    {
+        EntityManager em = emf.createEntityManager();
+        try
+        {
+            Match match = em.find(Match.class, id);
+            match.setOpponentTeam(matchDTO.getOpponentTeam());
+            match.setJudge(matchDTO.getJudge());
+            match.setType(matchDTO.getType());
+            match.setInDoors(matchDTO.getInDoors());
+            Location location = em.find(Location.class, matchDTO.getLocation().getId());
+            match.setLocation(location);
+
+            for (String player : matchDTO.getPlayers())
+            {
+
+
+            }
+
+            em.getTransaction().begin();
+            em.persist(match);
+            em.getTransaction().commit();
+            return new MatchDTO(match);
+        }finally
+        {
+            em.close();
+        }
     }
 }
