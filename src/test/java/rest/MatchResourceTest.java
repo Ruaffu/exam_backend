@@ -140,10 +140,6 @@ public class MatchResourceTest
         }
     }
 
-    @Test
-    public void testServerIsUp() {
-        given().when().get("/xxx").then().statusCode(200);
-    }
 
     //This test assumes the database contains two rows
     @Test
@@ -158,13 +154,5 @@ public class MatchResourceTest
                 .body("judge", hasItem(m1.getJudge()));
     }
 
-    @Test
-    public void testCount() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/xxx/count").then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("count", equalTo(2));
-    }
+
 }
