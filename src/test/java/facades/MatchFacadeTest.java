@@ -162,7 +162,6 @@ public class MatchFacadeTest
 
     @Test
     public void testUpdateMatch(){
-        m1 = new Match("testTeam1","testjudge1","testType1","false", l1);
         m1.setOpponentTeam("Dream Team");
         m1.setJudge("momo");
         m1.setType("hello");

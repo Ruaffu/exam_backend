@@ -243,7 +243,6 @@ public class MatchFacade
     }
 
 
-
     public MatchDTO updateAllMatchInformation(Long id, MatchDTO matchDTO)
     {
         EntityManager em = emf.createEntityManager();
