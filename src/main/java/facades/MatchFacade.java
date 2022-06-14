@@ -1,5 +1,6 @@
 package facades;
 
+import dtos.LocationDTO;
 import dtos.MatchDTO;
 import dtos.PlayerDTO;
 import dtos.RenameMeDTO;
@@ -148,5 +149,34 @@ public class MatchFacade
     }
 
 
+    public LocationDTO createLocation(LocationDTO locationDTO)
+    {
+        EntityManager em = emf.createEntityManager();
 
+        try
+        {
+            Location location = new Location(locationDTO.getAddress(), locationDTO.getCity(), locationDTO.getCondition());
+            em.getTransaction().begin();
+            em.persist(location);
+            em.getTransaction().commit();
+            return new LocationDTO(location);
+        }finally
+        {
+            em.close();
+        }
+    }
+
+    public List<LocationDTO> getAllLocations()
+    {
+        EntityManager em = emf.createEntityManager();
+        try
+        {
+            TypedQuery<Location> query = em.createQuery("SELECT l FROM Location l", Location.class);
+            List<Location> locations = query.getResultList();
+            return LocationDTO.getDtos(locations);
+        }finally
+        {
+            em.close();
+        }
+    }
 }

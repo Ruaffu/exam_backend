@@ -1,5 +1,6 @@
 package facades;
 
+import dtos.LocationDTO;
 import entities.Location;
 import entities.Match;
 import entities.Player;
@@ -116,6 +117,15 @@ public class MatchFacadeTest
 
     @Test
     public void testCreateLocation(){
+        Location l4 = new Location("testAddress4","testCity4","testCondition4");
+        l4.addMatch(m3);
+        LocationDTO locationDTO = new LocationDTO(l4);
+        facade.createLocation(locationDTO);
+
+        int expected = 4;
+        int actual = facade.getAllLocations().size();
+
+        assertEquals(expected, actual);
 
     }
 

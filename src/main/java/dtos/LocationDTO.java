@@ -16,7 +16,8 @@ public class LocationDTO
 
     public LocationDTO(Location location)
     {
-        this.id = location.getId();
+        if (location.getId() != null)
+            this.id = location.getId();
         this.address = location.getAddress();
         this.city = location.getCity();
         this.condition = location.getCondition();
