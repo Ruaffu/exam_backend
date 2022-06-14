@@ -73,12 +73,20 @@ public class MatchFacade
             em.close();
         }
     }
-    
+
+    //US-1
     public List<MatchDTO> getAllMatches(){
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Match> query = em.createQuery("SELECT m FROM Match m", Match.class);
-        List<Match> rms = query.getResultList();
-        return MatchDTO.getDtos(rms);
+        try
+        {
+            TypedQuery<Match> query = em.createQuery("SELECT m FROM Match m", Match.class);
+            List<Match> matches = query.getResultList();
+            return MatchDTO.getDtos(matches);
+        }finally
+        {
+            em.close();
+        }
+
     }
     
     public static void main(String[] args) {

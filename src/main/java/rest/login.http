@@ -14,3 +14,6 @@ GET https://cataas.com/cat?json=true
 POST http://localhost:8080/ca2_startcode_backend_war_exploded/api/info/newuser
 
 {"userName":"user2", "userPass":"test123"}
+
+###
+GET http://localhost:8080/exam_backend_war_exploded/api/matches/all

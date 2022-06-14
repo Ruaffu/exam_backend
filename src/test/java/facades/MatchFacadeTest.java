@@ -88,7 +88,7 @@ public class MatchFacadeTest
 //        Remove any data after each test was run
     }
 
-    // TODO: Delete or change this method 
+    // US-1
     @Test
     public void testGetAllMatches() throws Exception {
 

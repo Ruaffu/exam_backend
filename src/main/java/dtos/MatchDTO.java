@@ -10,22 +10,27 @@ import java.util.List;
 public class MatchDTO
 {
     private long id;
-    private String opponentTeam;
-    private String judge;
-    private String type;
-    private boolean inDoors;
-    private Location location;
-    private List<String> players;
+     String opponentTeam;
+     String judge;
+     String type;
+     boolean inDoors;
+     LocationDTO location;
+     List<String> players;
+
+    public MatchDTO()
+    {
+    }
 
     public MatchDTO(Match match)
     {
-        this.id = match.getId();
+        if(match.getId() != null)
+            this.id = match.getId();
         this.opponentTeam = match.getOpponentTeam();
         this.judge = match.getJudge();
         this.type = match.getType();
         this.inDoors = match.isInDoors();
-        this.location = match.getLocation();
         this.players = getPlayers(match.getPlayers());
+        this.location = new LocationDTO(match.getLocation());
     }
 
     public List<String> getPlayers(List<Player> players){
@@ -94,15 +99,6 @@ public class MatchDTO
         this.inDoors = inDoors;
     }
 
-    public Location getLocation()
-    {
-        return location;
-    }
-
-    public void setLocation(Location location)
-    {
-        this.location = location;
-    }
 
     public List<String> getPlayers()
     {
