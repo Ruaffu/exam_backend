@@ -4,7 +4,7 @@ import entities.Location;
 import entities.Match;
 import entities.Player;
 import utils.EMF_Creator;
-import entities.RenameMe;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -47,9 +47,9 @@ public class MatchFacadeTest
         l1 = new Location("testAddress1","testCity1","testCondition1");
         l2 = new Location("testAddress2","testCity2","testCondition2");
         l3 = new Location("testAddress3","testCity3","testCondition3");
-        m1 = new Match("testTeam1","testjudge1","testType1",false, l1);
-        m2 = new Match("testTeam2","testjudge2","testType2",false, l2);
-        m3 = new Match("testTeam3","testjudge3","testType3",false, l3);
+        m1 = new Match("testTeam1","testjudge1","testType1","false", l1);
+        m2 = new Match("testTeam2","testjudge2","testType2","false", l2);
+        m3 = new Match("testTeam3","testjudge3","testType3","false", l3);
         p1 = new Player("testName1","testPhone1","testEmail1","testStatus1");
         p2 = new Player("testName2","testPhone2","testEmail2","testStatus2");
         p3 = new Player("testName3","testPhone3","testEmail3","testStatus3");
@@ -70,12 +70,12 @@ public class MatchFacadeTest
             em.persist(l1);
             em.persist(l2);
             em.persist(l3);
-            em.persist(m1);
-            em.persist(m2);
-            em.persist(m3);
             em.persist(p1);
             em.persist(p2);
             em.persist(p3);
+            em.persist(m1);
+            em.persist(m2);
+            em.persist(m3);
 
             em.getTransaction().commit();
         } finally {
@@ -97,6 +97,58 @@ public class MatchFacadeTest
 
         assertEquals(expected, actual);
     }
-    
+
+    @Test
+    public void tesGetMatchByPlayerID(){
+        int expected = 1;
+        int actual = facade.getMatchesByPlayerId(p1.getId()).size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetMatchesByLocation(){
+        int expected = 1;
+        int actual = facade.getMatchesByLocationId(l1.getId()).size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testCreateLocation(){
+
+    }
+
+    @Test
+    public void testCreateMatch(){
+
+    }
+
+    @Test
+    public void testCreatePlayer(){
+
+    }
+
+    @Test
+    public void testUpdateMatch(){
+
+    }
+
+    @Test
+    public void testUpdateAllInformation(){
+
+    }
+
+    @Test
+    public void testDeletePlayer(){
+        facade.deletePlayer(p3.getId());
+        int expected = 2;
+        int actual = facade.getAllPlayers().size();
+
+        assertEquals(expected, actual);
+
+    }
+
+
 
 }

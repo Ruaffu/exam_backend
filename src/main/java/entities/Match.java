@@ -28,7 +28,7 @@ public class Match implements Serializable
     private String type;
 
     @Column(name = "inDoors", nullable = false)
-    private boolean inDoors;
+    private String inDoors;
 
     @ManyToMany()
     private List<Player> players;
@@ -40,7 +40,7 @@ public class Match implements Serializable
     {
     }
 
-    public Match(String opponentTeam, String judge, String type, boolean inDoors, Location location)
+    public Match(String opponentTeam, String judge, String type, String inDoors, Location location)
     {
         this.opponentTeam = opponentTeam;
         this.judge = judge;
@@ -90,12 +90,12 @@ public class Match implements Serializable
         this.type = type;
     }
 
-    public boolean isInDoors()
+    public String getInDoors()
     {
         return inDoors;
     }
 
-    public void setInDoors(boolean inDoors)
+    public void setInDoors(String inDoors)
     {
         this.inDoors = inDoors;
     }

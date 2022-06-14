@@ -29,7 +29,7 @@ public class PlayerDTO
         List<String> matchList = new ArrayList<>();
         for (Match m : matches)
         {
-            matchList.add("Oppenent Team: "+m.getOpponentTeam()+" judge: "+ m.getJudge()+" type: "+m.getType()+" inDoors: "+m.isInDoors());
+            matchList.add("Oppenent Team: "+m.getOpponentTeam()+" judge: "+ m.getJudge()+" type: "+m.getType()+" inDoors: "+m.getInDoors());
         }
         return matchList;
     }

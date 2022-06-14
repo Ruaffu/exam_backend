@@ -13,7 +13,7 @@ public class MatchDTO
      String opponentTeam;
      String judge;
      String type;
-     boolean inDoors;
+     String inDoors;
      LocationDTO location;
      List<String> players;
 
@@ -28,7 +28,7 @@ public class MatchDTO
         this.opponentTeam = match.getOpponentTeam();
         this.judge = match.getJudge();
         this.type = match.getType();
-        this.inDoors = match.isInDoors();
+        this.inDoors = match.getInDoors();
         this.players = getPlayers(match.getPlayers());
         this.location = new LocationDTO(match.getLocation());
     }
@@ -47,6 +47,26 @@ public class MatchDTO
         List<MatchDTO> matchDTOS = new ArrayList();
         matches.forEach(match -> matchDTOS.add(new MatchDTO(match)));
         return matchDTOS;
+    }
+
+    public String getInDoors()
+    {
+        return inDoors;
+    }
+
+    public void setInDoors(String inDoors)
+    {
+        this.inDoors = inDoors;
+    }
+
+    public LocationDTO getLocation()
+    {
+        return location;
+    }
+
+    public void setLocation(LocationDTO location)
+    {
+        this.location = location;
     }
 
     public long getId()
@@ -87,16 +107,6 @@ public class MatchDTO
     public void setType(String type)
     {
         this.type = type;
-    }
-
-    public boolean isInDoors()
-    {
-        return inDoors;
-    }
-
-    public void setInDoors(boolean inDoors)
-    {
-        this.inDoors = inDoors;
     }
 
 

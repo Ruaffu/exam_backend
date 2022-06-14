@@ -33,9 +33,9 @@ public class SetupTestUsers {
     Player p1 = new Player("testName1","testPhone1","testEmail1","testStatus1");
     Player p2 = new Player("testName2","testPhone2","testEmail2","testStatus2");
     Player p3 = new Player("testName3","testPhone3","testEmail3","testStatus3");
-    Match m1 = new Match("testTeam1","testjudge1","testType1",false, l1);
-    Match m2 = new Match("testTeam2","testjudge2","testType2",false, l2);
-    Match m3 = new Match("testTeam3","testjudge3","testType3",false, l3);
+    Match m1 = new Match("testTeam1","testjudge1","testType1","false", l1);
+    Match m2 = new Match("testTeam2","testjudge2","testType2","false", l2);
+    Match m3 = new Match("testTeam3","testjudge3","testType3","false", l3);
 
     m1.addPlayer(p1);
     m1.addPlayer(p2);

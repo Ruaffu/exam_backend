@@ -30,7 +30,7 @@ public class Player implements Serializable
     @Column(name = "status", nullable = false)
     private String status;
 
-    @ManyToMany(mappedBy = "players", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "players", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Match> matches;
 
     public Player()

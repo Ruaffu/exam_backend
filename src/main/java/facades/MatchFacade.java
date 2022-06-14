@@ -1,15 +1,21 @@
 package facades;
 
 import dtos.MatchDTO;
+import dtos.PlayerDTO;
 import dtos.RenameMeDTO;
+import entities.Location;
 import entities.Match;
+import entities.Player;
 import entities.RenameMe;
+
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 //import errorhandling.RenameMeNotFoundException;
+//import jdk.internal.org.objectweb.asm.tree.analysis.SourceValue;
 import utils.EMF_Creator;
 
 /**
@@ -62,16 +68,19 @@ public class MatchFacade
 //            throw new RenameMeNotFoundException("The RenameMe entity with ID: "+id+" Was not found");
         return new RenameMeDTO(rm);
     }
-    
-    //TODO Remove/Change this before use
-    public long getRenameMeCount(){
-        EntityManager em = getEntityManager();
-        try{
-            long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM RenameMe r").getSingleResult();
-            return renameMeCount;
-        }finally{  
+
+    public List<PlayerDTO> getAllPlayers(){
+        EntityManager em = emf.createEntityManager();
+        try
+        {
+            TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p", Player.class);
+            List<Player> players = query.getResultList();
+            return PlayerDTO.getDtos(players);
+        }finally
+        {
             em.close();
         }
+
     }
 
     //US-1
@@ -88,11 +97,56 @@ public class MatchFacade
         }
 
     }
+
+    //US-2
+    public List<MatchDTO> getMatchesByPlayerId(Long pId)
+    {
+        EntityManager em = emf.createEntityManager();
+        Player player = em.find(Player.class, pId);
+        List<Match> matches = player.getMatches();
+       return MatchDTO.getDtos(matches);
+
+    }
+
+    //US-3
+    public List<MatchDTO> getMatchesByLocationId(Long lId)
+    {
+        EntityManager em = emf.createEntityManager();
+        Location  location = em.find(Location.class, lId);
+        List<Match> matches = location.getMatches();
+        return MatchDTO.getDtos(matches);
+    }
+
+    //US-7
+    public PlayerDTO deletePlayer(Long id)
+    {
+        EntityManager em = emf.createEntityManager();
+        Player player = em.find(Player.class, id);
+        try
+        {
+            em.getTransaction().begin();
+            for (Match m : player.getMatches() )
+            {
+                m.setPlayers(null);
+                em.merge(m);
+
+            }
+            em.createNativeQuery("DELETE FROM player WHERE id = ?").setParameter(1, player.getId()).executeUpdate();
+            em.remove(player);
+            em.getTransaction().commit();
+            return new PlayerDTO(player);
+        }finally
+        {
+            em.close();
+        }
+    }
     
     public static void main(String[] args) {
         emf = EMF_Creator.createEntityManagerFactory();
         MatchFacade fe = getMatchFacade(emf);
         fe.getAllMatches().forEach(dto->System.out.println(dto));
     }
+
+
 
 }

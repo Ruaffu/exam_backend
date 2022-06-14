@@ -91,9 +91,9 @@ public class MatchResourceTest
         l1 = new Location("testAddress1","testCity1","testCondition1");
         l2 = new Location("testAddress2","testCity2","testCondition2");
         l3 = new Location("testAddress3","testCity3","testCondition3");
-        m1 = new Match("testTeam1","testjudge1","testType1",false, l1);
-        m2 = new Match("testTeam2","testjudge2","testType2",false, l2);
-        m3 = new Match("testTeam3","testjudge3","testType3",false, l3);
+        m1 = new Match("testTeam1","testjudge1","testType1","false", l1);
+        m2 = new Match("testTeam2","testjudge2","testType2","false", l2);
+        m3 = new Match("testTeam3","testjudge3","testType3","false", l3);
         p1 = new Player("testName1","testPhone1","testEmail1","testStatus1");
         p2 = new Player("testName2","testPhone2","testEmail2","testStatus2");
         p3 = new Player("testName3","testPhone3","testEmail3","testStatus3");
