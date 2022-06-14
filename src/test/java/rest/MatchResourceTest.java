@@ -28,7 +28,6 @@ public class MatchResourceTest
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static RenameMe r1, r2;
     private static Match m1,m2,m3;
     private static Location l1,l2,l3;
     private static Player p1,p2,p3;
