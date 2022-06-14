@@ -6,8 +6,20 @@
     </head>
     <body>
     <h1>Welcome to my exam backend</h1>
-    <h2>Enpoints:</h2>
-    <h3>Remember to change below endpoints!!</h3>
+    <h2>Endpoints:</h2>
+    <h2>User:</h2>
     <h3>/api/matches/all  gets a list of matches (user has to be logged in)</h3>
+    <h3>/api/matches/{id}/play  gets a list of matches by player id(user has to be logged in)</h3>
+    <h3>/api/matches/{id}/location  gets a list of matches by location id(user has to be logged in)</h3>
+    <h3>/api/matches/locations  gets a list of matches all locations (user has to be logged in)</h3>
+    <h3>/api/matches/players  gets a list of matches all players (user has to be logged in)</h3>
+    <br><br>
+    <h2>Admin:</h2>
+    <h3>/api/admin/location  create a location  (admin has to be logged in)</h3>
+    <h3>/api/admin/match  create a match  (admin has to be logged in)</h3>
+    <h3>/api/admin/player create a player  (admin has to be logged in)</h3>
+    <h3>/api/admin/{id}/match update a match (admin has to be logged in)</h3>
+    <h3>/api/admin/{mid}/connect/{lid} connect a match to a location (admin has to be logged in)</h3>
+    <h3>/api/admin/{id}/delete delete a player (admin has to be logged in)</h3>
     </body>
 </html>
