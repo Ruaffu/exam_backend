@@ -272,4 +272,22 @@ public class MatchFacade
             em.close();
         }
     }
+
+    public MatchDTO connectMatchToLocation(Long matchID, Long locationId)
+    {
+        EntityManager em = emf.createEntityManager();
+        Match match = em.find(Match.class, matchID);
+        Location location = em.find(Location.class, locationId);
+        match.setLocation(location);
+        try
+        {
+            em.getTransaction().begin();
+            em.merge(match);
+            em.getTransaction().commit();
+        } finally
+        {
+            em.close();
+        }
+        return new MatchDTO(match);
+    }
 }

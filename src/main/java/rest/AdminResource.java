@@ -89,6 +89,16 @@ public class AdminResource
                 .build();
     }
 
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{mid}/connect/{lid}")
+    @RolesAllowed("admin")
+    public String connectHarbour(@PathParam("mid") Long matchId, @PathParam("lid") Long locationId){
+        MatchDTO matchDTO = FACADE.connectMatchToLocation(matchId, locationId);
+        return GSON.toJson(matchDTO);
+    }
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
