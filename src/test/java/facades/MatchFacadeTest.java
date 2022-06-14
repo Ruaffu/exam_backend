@@ -159,6 +159,18 @@ public class MatchFacadeTest
 
     @Test
     public void testUpdateMatch(){
+        m1.setOpponentTeam("Dream Team");
+        m1.setJudge("momo");
+        m1.setType("hello");
+        m1.setInDoors("Yes indoors");
+        m1.setLocation(l2);
+
+        MatchDTO matchDTO = new MatchDTO(m1);
+        facade.updateMatch(m1.getId(), matchDTO);
+
+        assertEquals("momo", matchDTO.getJudge());
+        assertEquals(l2.getId(), matchDTO.getLocation().getId());
+
 
     }
 
