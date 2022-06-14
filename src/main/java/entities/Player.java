@@ -1,18 +1,21 @@
 package entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @NamedQuery(name = "Player.deleteAllRows", query = "DELETE from Player")
+@Table(name = "player")
 public class Player implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @NotNull
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -27,7 +30,7 @@ public class Player implements Serializable
     @Column(name = "status", nullable = false)
     private String status;
 
-    @ManyToMany(mappedBy = "players", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "players", cascade = CascadeType.PERSIST)
     private List<Match> matches;
 
     public Player()
@@ -111,16 +114,5 @@ public class Player implements Serializable
 
     }
 
-    @Override
-    public String toString()
-    {
-        return "Player{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", status='" + status + '\'' +
-                ", matches=" + matches +
-                '}';
-    }
+
 }

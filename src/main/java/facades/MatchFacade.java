@@ -1,6 +1,8 @@
 package facades;
 
+import dtos.MatchDTO;
 import dtos.RenameMeDTO;
+import entities.Match;
 import entities.RenameMe;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -14,13 +16,14 @@ import utils.EMF_Creator;
  *
  * Rename Class to a relevant name Add add relevant facade methods
  */
-public class FacadeExample {
+public class MatchFacade
+{
 
-    private static FacadeExample instance;
+    private static MatchFacade instance;
     private static EntityManagerFactory emf;
     
     //Private Constructor to ensure Singleton
-    private FacadeExample() {}
+    private MatchFacade() {}
     
     
     /**
@@ -28,10 +31,10 @@ public class FacadeExample {
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static FacadeExample getFacadeExample(EntityManagerFactory _emf) {
+    public static MatchFacade getMatchFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new FacadeExample();
+            instance = new MatchFacade();
         }
         return instance;
     }
@@ -71,17 +74,17 @@ public class FacadeExample {
         }
     }
     
-    public List<RenameMeDTO> getAll(){
+    public List<MatchDTO> getAllMatches(){
         EntityManager em = emf.createEntityManager();
-        TypedQuery<RenameMe> query = em.createQuery("SELECT r FROM RenameMe r", RenameMe.class);
-        List<RenameMe> rms = query.getResultList();
-        return RenameMeDTO.getDtos(rms);
+        TypedQuery<Match> query = em.createQuery("SELECT m FROM Match m", Match.class);
+        List<Match> rms = query.getResultList();
+        return MatchDTO.getDtos(rms);
     }
     
     public static void main(String[] args) {
         emf = EMF_Creator.createEntityManagerFactory();
-        FacadeExample fe = getFacadeExample(emf);
-        fe.getAll().forEach(dto->System.out.println(dto));
+        MatchFacade fe = getMatchFacade(emf);
+        fe.getAllMatches().forEach(dto->System.out.println(dto));
     }
 
 }

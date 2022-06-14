@@ -1,18 +1,21 @@
 package entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NamedQuery(name = "Match.deleteAllRows", query = "DELETE from Match")
+@NamedQuery(name = "Matches.deleteAllRows", query = "DELETE from Match ")
+@Table(name = "matches")
 public class Match implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @NotNull
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "opponentTeam", nullable = false)
@@ -21,16 +24,16 @@ public class Match implements Serializable
     @Column(name = "judge", nullable = false)
     private String judge;
 
-    @Column(name = "type", nullable = false)
+    @Column(name = "matchtype", nullable = false)
     private String type;
 
     @Column(name = "inDoors", nullable = false)
     private boolean inDoors;
 
-    @ManyToMany
+    @ManyToMany()
     private List<Player> players;
 
-    @ManyToOne
+    @ManyToOne()
     private Location location;
 
     public Match()
@@ -124,17 +127,5 @@ public class Match implements Serializable
         }
     }
 
-    @Override
-    public String toString()
-    {
-        return "Match{" +
-                "id=" + id +
-                ", opponentTeam='" + opponentTeam + '\'' +
-                ", judge='" + judge + '\'' +
-                ", type='" + type + '\'' +
-                ", inDoors=" + inDoors +
-                ", players=" + players +
-                ", location=" + location +
-                '}';
-    }
+
 }

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NamedQuery(name = "Location.deleteAllRows", query = "DELETE from Location")
+@NamedQuery(name = "location.deleteAllRows", query = "DELETE from Location")
+@Table(name = "location")
 public class Location implements Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -21,7 +22,7 @@ public class Location implements Serializable
     @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(name = "condition", nullable = false)
+    @Column(name = "cond", nullable = false)
     private String condition;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, orphanRemoval = true)
@@ -93,15 +94,5 @@ public class Location implements Serializable
         matches.add(match);
     }
 
-    @Override
-    public String toString()
-    {
-        return "Location{" +
-                "id=" + id +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", condition='" + condition + '\'' +
-                ", matches=" + matches +
-                '}';
-    }
+
 }

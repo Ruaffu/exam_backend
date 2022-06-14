@@ -38,6 +38,12 @@ public class MatchDTO
         return playerList;
     }
 
+    public static List<MatchDTO> getDtos(List<Match> matches) {
+        List<MatchDTO> matchDTOS = new ArrayList();
+        matches.forEach(match -> matchDTOS.add(new MatchDTO(match)));
+        return matchDTOS;
+    }
+
     public long getId()
     {
         return id;
