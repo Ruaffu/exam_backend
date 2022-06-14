@@ -27,15 +27,15 @@ public class SetupTestUsers {
     User both = new User("user_admin", "test123");
 
 
-    Location l1 = new Location("testAddress1","testCity1","testCondition1");
-    Location l2 = new Location("testAddress2","testCity2","testCondition2");
-    Location l3 = new Location("testAddress3","testCity3","testCondition3");
-    Player p1 = new Player("testName1","testPhone1","testEmail1","testStatus1");
-    Player p2 = new Player("testName2","testPhone2","testEmail2","testStatus2");
-    Player p3 = new Player("testName3","testPhone3","testEmail3","testStatus3");
-    Match m1 = new Match("testTeam1","testjudge1","testType1","false", l1);
-    Match m2 = new Match("testTeam2","testjudge2","testType2","false", l2);
-    Match m3 = new Match("testTeam3","testjudge3","testType3","false", l3);
+    Location l1 = new Location("4 newport street","Mega City 1","Good");
+    Location l2 = new Location("32 Angel way","Sun City","great");
+    Location l3 = new Location("3 dusty way","Sad city","poor");
+    Player p1 = new Player("Gordon Freeman","32456789","freeman@blackmesa.science","unknown");
+    Player p2 = new Player("Severus Snape","90785634","snape@hogwarts.magic","inactive");
+    Player p3 = new Player("Alyx Vance","32672389","avance@hl3.valve","active");
+    Match m1 = new Match("The Freemans","Tom","Tennis","yes", l1);
+    Match m2 = new Match("Testers","jack","badminton","no", l2);
+    Match m3 = new Match("The Griffins","Hermione","pool","no", l3);
 
     m1.addPlayer(p1);
     m1.addPlayer(p2);
