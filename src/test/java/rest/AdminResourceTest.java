@@ -149,24 +149,24 @@ public class AdminResourceTest
 
 
     //This test assumes the database contains two rows
-//    @Test
-//    public void testCreateLocation() throws Exception {
-//        login("admin", "test123");
-//        Location l4 = new Location("testAddress4","testCity4","testCondition4");
+    @Test
+    public void testCreateLocation() throws Exception {
+        login("admin", "test123");
+        Location l4 = new Location("testAddress4","testCity4","testCondition4");
 //        l4.addMatch(m3);
-//        LocationDTO locationDTO = new LocationDTO(l4);
-//        String data = GSON.toJson(locationDTO);
-//        System.out.println(data);
-//        given()
-//                .contentType("application/json")
-//                .header("x-Access-token", securityToken)
-//                .body(data)
-//                .get("/admin/location").then()
-//                .assertThat()
-//                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body("address", equalTo(locationDTO.getAddress()));
-//
-//    }
+        LocationDTO locationDTO = new LocationDTO(l4);
+        String data = GSON.toJson(locationDTO);
+        System.out.println(data);
+        given()
+                .contentType("application/json")
+                .header("x-Access-token", securityToken)
+                .body(data)
+                .get("/admin/location").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("address", equalTo(locationDTO.getAddress()));
+
+    }
 //
 //    @Test
 //    public void testCreateMatch() throws Exception {

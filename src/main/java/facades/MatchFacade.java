@@ -186,8 +186,8 @@ public class MatchFacade
 
         try
         {
-            Location location = em.find(Location.class, matchDTO.getLocation().getId());
-            Match match = new Match(matchDTO.getOpponentTeam(), matchDTO.getJudge(), matchDTO.getType(), matchDTO.getInDoors(), location);
+//            Location location = em.find(Location.class, matchDTO.getLocation().getId());
+            Match match = new Match(matchDTO.getOpponentTeam(), matchDTO.getJudge(), matchDTO.getType(), matchDTO.getInDoors());
             em.getTransaction().begin();
             em.persist(match);
             em.getTransaction().commit();
@@ -225,8 +225,11 @@ public class MatchFacade
             match.setJudge(matchDTO.getJudge());
             match.setType(matchDTO.getType());
             match.setInDoors(matchDTO.getInDoors());
-            Location location = em.find(Location.class, matchDTO.getLocation().getId());
-            match.setLocation(location);
+            if (matchDTO.getLocation() != null)
+            {
+                Location location = em.find(Location.class, matchDTO.getLocation().getId());
+                match.setLocation(location);
+            }
 
             em.getTransaction().begin();
             em.merge(match);

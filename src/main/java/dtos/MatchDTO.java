@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MatchDTO
 {
-    private long id;
+    private Long id;
      String opponentTeam;
      String judge;
      String type;
@@ -30,8 +30,11 @@ public class MatchDTO
         this.type = match.getType();
         this.inDoors = match.getInDoors();
         this.players = getPlayers(match.getPlayers());
+        if(match.getLocation() != null)
         this.location = new LocationDTO(match.getLocation());
     }
+
+
 
     public List<String> getPlayers(List<Player> players){
         List<String> playerList = new ArrayList<>();
@@ -74,7 +77,7 @@ public class MatchDTO
         return id;
     }
 
-    public void setId(long id)
+    public void setId(Long id)
     {
         this.id = id;
     }

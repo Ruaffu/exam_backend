@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LocationDTO
 {
-    private long id;
+    private Long id;
     private String address;
     private String city;
     private String condition;
@@ -45,7 +45,7 @@ public class LocationDTO
         return id;
     }
 
-    public void setId(long id)
+    public void setId(Long id)
     {
         this.id = id;
     }

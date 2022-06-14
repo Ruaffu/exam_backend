@@ -50,6 +50,15 @@ public class Match implements Serializable
         this.location = location;
     }
 
+    public Match(String opponentTeam, String judge, String type, String inDoors)
+    {
+        this.opponentTeam = opponentTeam;
+        this.judge = judge;
+        this.type = type;
+        this.inDoors = inDoors;
+        this.players = new ArrayList<>();
+    }
+
     public Long getId()
     {
         return id;
