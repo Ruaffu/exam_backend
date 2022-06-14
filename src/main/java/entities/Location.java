@@ -94,5 +94,9 @@ public class Location implements Serializable
         matches.add(match);
     }
 
+    public void removeMatch(Match match){
+        matches.remove(match);
+    }
+
 
 }

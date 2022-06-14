@@ -9,6 +9,7 @@ import entities.Match;
 import entities.Player;
 import entities.RenameMe;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -239,10 +240,9 @@ public class MatchFacade
         {
             em.close();
         }
-
-
-
     }
+
+
 
     public MatchDTO updateAllMatchInformation(Long id, MatchDTO matchDTO)
     {

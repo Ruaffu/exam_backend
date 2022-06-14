@@ -136,5 +136,9 @@ public class Match implements Serializable
         }
     }
 
+    public void removePlayer(Player player){
+        players.remove(player);
+    }
+
 
 }

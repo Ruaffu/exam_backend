@@ -114,5 +114,9 @@ public class Player implements Serializable
 
     }
 
+    public void removeMatch(Match match){
+        matches.remove(match);
+    }
+
 
 }
