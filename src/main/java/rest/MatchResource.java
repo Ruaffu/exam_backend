@@ -2,7 +2,9 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.LocationDTO;
 import dtos.MatchDTO;
+import dtos.PlayerDTO;
 import facades.MatchFacade;
 import utils.EMF_Creator;
 import utils.HttpUtils;
@@ -62,6 +64,32 @@ public class MatchResource
     public Response getMatchesByLocationId(@PathParam("id") Long id) throws IOException
     {
         List<MatchDTO> response = FACADE.getMatchesByLocationId(id);
+        return Response
+                .ok()
+                .entity(GSON.toJson(response))
+                .build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("locations")
+    @RolesAllowed("user")
+    public Response getAllLocations() throws IOException
+    {
+        List<LocationDTO> response = FACADE.getAllLocations();
+        return Response
+                .ok()
+                .entity(GSON.toJson(response))
+                .build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("players")
+    @RolesAllowed("user")
+    public Response getAllPlayers() throws IOException
+    {
+        List<PlayerDTO> response = FACADE.getAllPlayers();
         return Response
                 .ok()
                 .entity(GSON.toJson(response))
