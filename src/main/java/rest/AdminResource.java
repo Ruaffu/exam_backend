@@ -44,6 +44,7 @@ public class AdminResource
                 .build();
     }
 
+    //US-4
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -59,6 +60,7 @@ public class AdminResource
                 .build();
     }
 
+    //US-4
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -74,6 +76,7 @@ public class AdminResource
                 .build();
     }
 
+    //US-5
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -99,6 +102,7 @@ public class AdminResource
         return GSON.toJson(matchDTO);
     }
 
+    //US-7
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

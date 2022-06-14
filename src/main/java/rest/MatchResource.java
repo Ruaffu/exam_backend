@@ -31,6 +31,7 @@ public class MatchResource
         return "Hello, World!";
     }
 
+    //US-1
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("all")
@@ -44,6 +45,7 @@ public class MatchResource
                 .build();
     }
 
+    //US-2
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}/play")
@@ -57,6 +59,7 @@ public class MatchResource
                 .build();
     }
 
+    //US-3
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}/location")

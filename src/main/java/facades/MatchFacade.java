@@ -50,26 +50,6 @@ public class MatchFacade
     private EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
-    public RenameMeDTO create(RenameMeDTO rm){
-        RenameMe rme = new RenameMe(rm.getDummyStr1(), rm.getDummyStr2());
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(rme);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-        return new RenameMeDTO(rme);
-    }
-    public RenameMeDTO getById(long id) { //throws RenameMeNotFoundException {
-        EntityManager em = emf.createEntityManager();
-        RenameMe rm = em.find(RenameMe.class, id);
-//        if (rm == null)
-//            throw new RenameMeNotFoundException("The RenameMe entity with ID: "+id+" Was not found");
-        return new RenameMeDTO(rm);
-    }
 
     public List<PlayerDTO> getAllPlayers(){
         EntityManager em = emf.createEntityManager();
@@ -149,7 +129,7 @@ public class MatchFacade
         fe.getAllMatches().forEach(dto->System.out.println(dto));
     }
 
-
+    //US-4
     public LocationDTO createLocation(LocationDTO locationDTO)
     {
         EntityManager em = emf.createEntityManager();
@@ -181,6 +161,7 @@ public class MatchFacade
         }
     }
 
+    //US-4
     public MatchDTO createMatch(MatchDTO matchDTO)
     {
         EntityManager em = emf.createEntityManager();
@@ -199,6 +180,7 @@ public class MatchFacade
         }
     }
 
+    //US-4
     public PlayerDTO createPlayer(PlayerDTO playerDTO)
     {
         EntityManager em = emf.createEntityManager();
@@ -216,6 +198,7 @@ public class MatchFacade
         }
     }
 
+    //US-5
     public MatchDTO updateMatch(Long id, MatchDTO matchDTO)
     {
         EntityManager em = emf.createEntityManager();

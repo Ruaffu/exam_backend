@@ -28,7 +28,7 @@ public class LocationDTO
         List<String> matchList = new ArrayList<>();
         for (Match m : matches)
         {
-            matchList.add("Oppenent Team: "+m.getOpponentTeam()+" judge: "+ m.getJudge()+" type: "+m.getType()+" inDoors: "+m.getInDoors());
+            matchList.add("Opponent Team: "+m.getOpponentTeam()+" judge: "+ m.getJudge()+" type: "+m.getType()+" inDoors: "+m.getInDoors());
 
         }
         return matchList;
