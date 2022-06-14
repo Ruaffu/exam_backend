@@ -17,7 +17,8 @@ public class PlayerDTO
 
     public PlayerDTO(Player player)
     {
-        this.id = player.getId();
+        if(player.getId() != null)
+            this.id = player.getId();
         this.name = player.getName();
         this.phone = player.getPhone();
         this.email = player.getEmail();

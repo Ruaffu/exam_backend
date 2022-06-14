@@ -179,4 +179,39 @@ public class MatchFacade
             em.close();
         }
     }
+
+    public MatchDTO createMatch(MatchDTO matchDTO)
+    {
+        EntityManager em = emf.createEntityManager();
+
+        try
+        {
+            Location location = em.find(Location.class, matchDTO.getLocation().getId());
+            Match match = new Match(matchDTO.getOpponentTeam(), matchDTO.getJudge(), matchDTO.getType(), matchDTO.getInDoors(), location);
+            em.getTransaction().begin();
+            em.persist(match);
+            em.getTransaction().commit();
+            return new MatchDTO(match);
+        }finally
+        {
+            em.close();
+        }
+    }
+
+    public PlayerDTO createPlayer(PlayerDTO playerDTO)
+    {
+        EntityManager em = emf.createEntityManager();
+
+        try
+        {
+            Player player = new Player(playerDTO.getName(), playerDTO.getPhone(), playerDTO.getEmail(), playerDTO.getStatus());
+            em.getTransaction().begin();
+            em.persist(player);
+            em.getTransaction().commit();
+            return new PlayerDTO(player);
+        }finally
+        {
+            em.close();
+        }
+    }
 }

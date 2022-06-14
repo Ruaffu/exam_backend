@@ -1,6 +1,8 @@
 package facades;
 
 import dtos.LocationDTO;
+import dtos.MatchDTO;
+import dtos.PlayerDTO;
 import entities.Location;
 import entities.Match;
 import entities.Player;
@@ -131,11 +133,27 @@ public class MatchFacadeTest
 
     @Test
     public void testCreateMatch(){
+        Match m4 = new Match("testTeam4","testjudge4","testType4","true", l1);
+        m4.addPlayer(p2);
+        MatchDTO matchDTO = new MatchDTO(m4);
+        facade.createMatch(matchDTO);
 
+        int expected = 4;
+        int actual = facade.getAllMatches().size();
+
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testCreatePlayer(){
+        Player p4 = new Player("testName4","testPhone4","testEmail4","testStatus4");
+        PlayerDTO playerDTO = new PlayerDTO(p4);
+        facade.createPlayer(playerDTO);
+
+        int expected = 4;
+        int actual = facade.getAllPlayers().size();
+
+        assertEquals(expected, actual);
 
     }
 
