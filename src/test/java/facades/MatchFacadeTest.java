@@ -29,7 +29,7 @@ public class MatchFacadeTest
     private static MatchFacade facade;
     private static Match m1,m2,m3;
     private static Location l1,l2,l3;
-    private static Player p1,p2,p3,p4,p5;
+    private static Player p1,p2,p3;
 
     public MatchFacadeTest() {
     }
@@ -59,8 +59,6 @@ public class MatchFacadeTest
         p1 = new Player("testName1","testPhone1","testEmail1","testStatus1");
         p2 = new Player("testName2","testPhone2","testEmail2","testStatus2");
         p3 = new Player("testName3","testPhone3","testEmail3","testStatus3");
-        p4 = new Player("testName4","testPhone4","testEmail4","testStatus4");
-        p5 = new Player("testName5","testPhone5","testEmail5","testStatus5");
 
         m1.addPlayer(p1);
         m1.addPlayer(p2);
@@ -81,8 +79,6 @@ public class MatchFacadeTest
             em.persist(p1);
             em.persist(p2);
             em.persist(p3);
-            em.persist(p4);
-            em.persist(p5);
             em.persist(m1);
             em.persist(m2);
             em.persist(m3);
@@ -186,7 +182,8 @@ public class MatchFacadeTest
 
     @Test
     public void testUpdateAllInformation(){
-
+        Player p4 = new Player("testName4","testPhone4","testEmail4","testStatus4");
+        Player p5 = new Player("testName5","testPhone5","testEmail5","testStatus5");
         m1.setOpponentTeam("Dream Team");
         m1.setJudge("momo");
         m1.setType("hello");
