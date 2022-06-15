@@ -211,6 +211,26 @@ public class MatchFacadeTest
 
     }
 
+    @Test
+    public void testDeleteMatch(){
+        facade.deleteMatch(m3.getId());
+        int expected = 2;
+        int actual = facade.getAllMatches().size();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void testDeleteLocation(){
+        facade.deleteLocation(l3.getId());
+        int expected = 2;
+        int actual = facade.getAllLocations().size();
+
+        assertEquals(expected, actual);
+
+    }
+
 
 
 }

@@ -122,6 +122,52 @@ public class MatchFacade
             em.close();
         }
     }
+
+    public MatchDTO deleteMatch(Long id)
+    {
+        EntityManager em = emf.createEntityManager();
+        Match match = em.find(Match.class, id);
+        try
+        {
+            em.getTransaction().begin();
+            for (Player p : match.getPlayers() )
+            {
+                p.setMatches(null);
+                em.merge(p);
+
+            }
+
+            em.remove(match);
+            em.getTransaction().commit();
+            return new MatchDTO(match);
+        }finally
+        {
+            em.close();
+        }
+    }
+
+    public LocationDTO deleteLocation(Long id)
+    {
+        EntityManager em = emf.createEntityManager();
+        Location location = em.find(Location.class, id);
+        try
+        {
+            em.getTransaction().begin();
+            for (Match m : location.getMatches() )
+            {
+                m.setPlayers(null);
+                em.merge(m);
+
+            }
+
+            em.remove(location);
+            em.getTransaction().commit();
+            return new LocationDTO(location);
+        }finally
+        {
+            em.close();
+        }
+    }
     
     public static void main(String[] args) {
         emf = EMF_Creator.createEntityManagerFactory();

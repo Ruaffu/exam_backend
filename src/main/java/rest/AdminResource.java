@@ -116,4 +116,32 @@ public class AdminResource
                 .entity(GSON.toJson(playerDTO))
                 .build();
     }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{id}/delete/match")
+    @RolesAllowed("admin")
+    public Response deleteMatch(@PathParam("id") Long id) throws IOException
+    {
+        MatchDTO matchDTO = FACADE.deleteMatch(id);
+        return Response
+                .ok()
+                .entity(GSON.toJson(matchDTO))
+                .build();
+    }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{id}/delete/location")
+    @RolesAllowed("admin")
+    public Response deleteLocation(@PathParam("id") Long id) throws IOException
+    {
+        LocationDTO locationDTO = FACADE.deleteLocation(id);
+        return Response
+                .ok()
+                .entity(GSON.toJson(locationDTO))
+                .build();
+    }
 }
